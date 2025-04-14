@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .codeCheck {
+            width: 300px;
+            background-color: #f5f5f5;
+            margin: 0 auto;
+            padding: 20px 0px 20px 40px;
+        }
+        .code span {
+            display: inline-block;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            font-style: italic;
+            font-size: 30px;
+            font-weight: 700;
+            color: blue;
+            margin: 10px 10px 10px 0;
+            padding: 10px;
+        }
+        .code a {
+            color: skyblue;
+            text-decoration: none;
+        }
+        .code a:hover {
+            text-decoration: underline;
+        }
+        .check {
+            margin-bottom: 10px;
+        }
+        button {
+            width: 50px;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="codeCheck">
+      <div class="code">
+        <span id="code"></span>
+        <a href="#" class="change">看不清换一张</a>
+      </div>
+      <div class="check">
+        <label for="checkCode"
+          >验证码：
+          <input style="height: 24px;font-size: 18px;" type="text" id="checkCode" />
+        </label>
+    </div>
+    <button>确定</button>
+    </div>
+    <script>
+        const codeEl = document.querySelector('#code')
+        const inputEl = document.querySelector('input')
+        window.onload = function() {
+            codeEl.textContent = getCode()
+        }
+        document.querySelector('.change').onclick = function() {
+            codeEl.textContent = getCode()
+        }
+        document.querySelector('button').onclick = function() {
+            inputEl.value === codeEl.textContent ? alert('验证码正确'):alert('验证码错误')
+            inputEl.value = ''
+            codeEl.textContent = getCode()
+        }
+        function getCode() {
+            const arr = ['1','2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f']
+            let str = ''
+            for(let i = 0; i < 6; i++) {
+                str += arr[Math.floor(Math.random()*15)]
+            }
+            return str
+        }
+    </script>
+  </body>
+</html>
