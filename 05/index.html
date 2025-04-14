@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #form {
+        width: 200px;
+        background-color: #f5f5f5;
+        margin: 0 auto;
+        padding: 10px;
+      }
+      h3,
+      .btn {
+        text-align: center;
+        margin: 0 auto;
+      }
+      label {
+        display: block;
+        margin: 10px;
+        padding-left: 20px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="form">
+      <label for=""><h3>自我评价</h3></label>
+      <form action="">
+        <label for="rubbish"><input type="checkbox" id="rubbish" />垃圾</label>
+        <label for="white"><input type="checkbox" id="white" />好菜</label>
+        <label for="nouse"><input type="checkbox" id="nouse" />白忙活</label>
+        <label for="disguss"><input type="checkbox" id="disguss" />恶心</label>
+        <label for="loser"><input type="checkbox" id="loser" />loser</label>
+      </form>
+      <div class="btn">
+        <button onclick="getAll(0)">全选</button>
+        <button onclick="getAll(1)">反选</button>
+      </div>
+    </div>
+    <script>
+      const btns = document.querySelectorAll("button");
+      const inputs = document.querySelectorAll("input");
+      let ck = true;
+      function getAll(i) {
+        inputs.forEach((item) => {
+          if (i === 0) {
+            item.checked = ck;
+          } else {
+            item.checked = !item.checked;
+          }
+        });
+        ck = !ck
+      }
+    </script>
+  </body>
+</html>
