@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul, li {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        .content {
+            border: 1px solid #ccc;
+            margin: 0 auto;
+            width: 300px;
+            height: 300px;
+        }
+        ul {
+            display: flex;
+            justify-content: space-between;
+        }
+        ul li {
+            text-align: center;
+            height:30px;
+            line-height: 30px;
+            flex-grow: 1;
+            border-right: 1px solid #333;
+            cursor: pointer;
+            background-color: #ccc;
+        }
+        ul li:last-child{
+            border-right: none;
+        }
+        ul li.active {
+            background-color: skyblue;
+        }
+        .imgs {
+            display: flex;
+            overflow: hidden;
+        }
+        .imgs img {
+            width: 300px;
+            display: none;
+        }
+        .imgs img.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <ul>
+            <li class="active">apple</li>
+            <li>banana</li>
+            <li>orange</li>
+            <li>pear</li>
+        </ul>
+        <div class="imgs">
+            <img src="./img/apple.png" class="active" alt="apple">
+            <img src="./img/banana.png" alt="banana">
+            <img src="./img/orange.png" alt="orange">
+            <img src="./img/pear.png" alt="pear">
+        </div>
+        <script>
+            const lis = document.querySelectorAll('li')
+            const imgs = document.querySelectorAll('img')
+            let activeIndex = 0
+            lis.forEach((item,index)=>{
+                item.addEventListener('mouseover', ()=>{
+                    imgs[activeIndex].classList.remove('active')
+                    lis[activeIndex].classList.remove('active')
+                    lis[index].classList.add('active')
+                    imgs[index].classList.add('active')
+                    activeIndex = index
+                })
+            })
+        </script>
+    </div>
+</body>
+</html>
