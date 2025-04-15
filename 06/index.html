@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .content {
+        display: flex;
+        width: 480px;
+        flex-direction: column;
+        align-items: stretch;
+        border: 1px solid;
+        margin: 0 auto;
+      }
+      .big {
+        width: 100%;
+      }
+      .imgs {
+        display: flex;
+      }
+      .imgs img {
+        padding: 10px;
+        width: 100px;
+      }
+      .imgs img:hover,
+      .big:hover {
+        box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <img class="big" src="../img/apple.png" alt="" />
+      <div class="imgs">
+        <img src="../img/apple.png" alt="" />
+        <img src="../img/banana.png" alt="" />
+        <img src="../img/orange.png" alt="" />
+        <img src="../img/pear.png" alt="" />
+      </div>
+    </div>
+    <script>
+      const imgs = document.querySelectorAll("img");
+      imgs.forEach((item) => {
+        item.addEventListener("mouseover", () => {
+          imgs[0].src = item.src;
+        });
+      });
+    </script>
+  </body>
+</html>
