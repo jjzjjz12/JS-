@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .bar {
+        width: 500px;
+        height: 30px;
+        border: 1px solid;
+        margin-bottom: 10px;
+      }
+      .bar .scee {
+        width: 0%;
+        height: 100%;
+        background-color: rgb(56, 205, 56);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div class="bar">
+        <div class="scee"><span>0</span><span>%</span></div>
+      </div>
+      <button>安装</button>
+    </div>
+    <script>
+      const sceeEl = document.querySelector(".scee");
+      const spans = document.querySelectorAll("span");
+      const btn = document.querySelector("button");
+      let num = 0;
+      let flag = true;
+      btn.onclick = function () {
+        const timer =
+          flag &&
+          setInterval(() => {
+            num += 20;
+            spans[0].textContent = Math.ceil(num/500*100)
+            sceeEl.style.width = num + "px";
+            if (num === 500) clearInterval(timer);
+          }, 1000);
+        flag = false;
+      };
+    </script>
+  </body>
+</html>
